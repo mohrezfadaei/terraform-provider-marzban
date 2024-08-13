@@ -14,7 +14,40 @@ func resourceNode() *schema.Resource {
 		UpdateContext: resourceNodeUpdate,
 		DeleteContext: resourceNodeDelete,
 
-		Schema: map[string]*schema.Schema{},
+		Schema: map[string]*schema.Schema{
+			"name": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"address": {
+				Type:     schema.TypeString,
+				Required: true,
+			},
+			"port": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Default:  62050,
+			},
+			"api_port": {
+				Type:     schema.TypeInt,
+				Optional: true,
+				Default:  62051,
+			},
+			"usage_coefficient": {
+				Type:     schema.TypeFloat,
+				Optional: true,
+				Default:  1.0,
+			},
+			"add_as_new_host": {
+				Type:     schema.TypeBool,
+				Optional: true,
+				Default:  true,
+			},
+			"node_id": {
+				Type:     schema.TypeInt,
+				Computed: true,
+			},
+		},
 	}
 }
 
